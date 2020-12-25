@@ -21,8 +21,27 @@ class App extends Component {
         jobTitle: "Software Engineer",
         startDate: "October 2019",
         endDate: "January 2020",
+        tasks:["Created clothing website", "Maintained website database", 
+        "Communicated with clients with regards to technical questions"],
+      }],
+      generalInfoInput: {
+        name: "",
+        email: "",
+        phoneNumber: ""
+      },
+      educationInput: {
+        school: "",
+        title: "",
+        startDate: "",
+        endDate: "",
+      },
+      experienceInput: {
+        companyName: "",
+        jobTitle: "",
+        startDate: "",
+        endDate: "",
         tasks:[],
-      }]
+      },
     }
   }
 
