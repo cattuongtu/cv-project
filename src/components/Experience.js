@@ -20,6 +20,7 @@ class Experience extends Component{
         endDate: "",
         tasks:[],
       },
+      editMode: false,
     }
   }
   

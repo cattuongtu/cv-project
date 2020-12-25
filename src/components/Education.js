@@ -17,6 +17,7 @@ class Education extends Component{
         startDate: "",
         endDate: "",
       },
+      editMode: false,
     }
   }
   
