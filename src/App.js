@@ -49,12 +49,18 @@ class App extends Component {
   }
 
   render() {
+    // Pre-loaded information 
+    const {generalInfo, education, 
+      experience, generalInfoInput, 
+      educationInput, experienceInput
+    } = this.state;
+
     return (
       <div>
         <h1>CV Application</h1>
-        <GeneralInfo/>
-        <Education/>
-        <Experience/>
+        <GeneralInfo generalInfo={generalInfo} generalInfoInput={generalInfoInput}/>
+        <Education education={education} educationInput={educationInput}/>
+        <Experience experience={experience} experienceInput={experienceInput}/>
       </div>
     )
   }

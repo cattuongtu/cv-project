@@ -1,13 +1,33 @@
-import React from "react";
-import uniqid from "uniqid";
+import React, {Component} from "react";
 
-const GeneralInfo = (props) => {
+class GeneralInfo extends Component {
+  constructor() {
+    super();
 
-  return ( 
-    <h1>
-      General Info Section
-    </h1>
-  );
+    this.state = {
+      generalInfo: [{
+        name: "Firstname Lastname",
+        email: "exampleemail@gmail.com",
+        phoneNumber: "000-000-0000"
+      },],
+      generalInfoInput: {
+        name: "",
+        email: "",
+        phoneNumber: ""
+      },
+    }
+  }
+  
+  render() {
+    return ( 
+      <div>
+        <h1>
+          General Info Section
+        </h1>
+      </div>
+    );
+  }
+  
 };
 
 export default GeneralInfo;
