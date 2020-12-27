@@ -62,10 +62,20 @@ class GeneralInfo extends Component {
     })
   }
 
-  addInfo = (e) => {
+  switchMode = (e) => {
+    const prevState = this.state.editMode;
     e.preventDefault();
     this.setState({
-      editMode: true,
+      editMode: !prevState,
+    })
+  }
+
+  shiftSection = (e) => {
+    const prevState = this.state.generalInfo;
+    prevState.shift();
+    e.preventDefault();
+    this.setState({
+      generalInfo: prevState,
     })
   }
 
@@ -73,11 +83,11 @@ class GeneralInfo extends Component {
     if (!this.state.editMode) {
       return ( 
         <div>
-          <button onClick={this.addInfo}>Add Info</button>
-          <button onClick={this.popSection}>Remove Latest Section</button>
+          <button onClick={this.switchMode}>Add Info</button>
+          <button onClick={this.shiftSection}>Remove Oldest Section</button>
           {this.state.generalInfo.map((section) => {
             return (
-              <div>
+              <div key={uniqid()}>
                 <h4 key={uniqid()}>{section.name}</h4>
                 <h4 key={uniqid()}>{section.email}</h4>
                 <h4 key={uniqid()}>{section.phoneNumber}</h4>
@@ -116,6 +126,7 @@ class GeneralInfo extends Component {
             id = "phoneInput"
           />
           <button type="submit">Add Information</button>
+          <button onClick={this.switchMode}>Cancel</button>
         </form>
       </div>
     );
