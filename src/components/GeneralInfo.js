@@ -59,7 +59,7 @@ class GeneralInfo extends Component {
         phoneNumber: ""
       },
       editMode: false,
-    })
+    });
   }
 
   switchMode = (e) => {
@@ -104,21 +104,21 @@ class GeneralInfo extends Component {
           General Info
         </h1>
         <form onSubmit={this.onSubmitInfo}>
-          <label htmlFor="nameInput">Enter name </label>
+          <label htmlFor="nameInput"> Enter name </label>
           <input
             onChange = {this.handleNameChange}
             value = {this.state.generalInfoInput.name}
             type = "text"
             id="nameInput"
           />
-          <label htmlFor="emailInput">Enter email </label>
+          <label htmlFor="emailInput"> Enter email </label>
           <input 
             onChange = {this.handleEmailChange}
             value = {this.state.generalInfoInput.email}
             type = "text"
             id = "emailInput"
           />
-          <label htmlFor="phoneInput">Enter phone number </label>
+          <label htmlFor="phoneInput"> Enter phone number </label>
           <input 
             onChange = {this.handlePhoneChange}
             value = {this.state.generalInfoInput.phoneNumber}
