@@ -6,12 +6,7 @@ class Education extends Component{
     super();
 
     this.state = {
-      education: [{
-        school: "San Somewhere State University",
-        title: "Bachelor's of Science in Computer Science",
-        startDate: "August 2018",
-        endDate: "December 2021",
-      },],
+      education: [],
       educationInput: {
         school: "",
         title: "",
