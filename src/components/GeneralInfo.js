@@ -1,49 +1,52 @@
 import React, {Component} from "react";
+import uniqid from "uniqid";
 
 class GeneralInfo extends Component {
   constructor() {
     super();
 
     this.state = {
-      generalInfo: [{
-        name: "Firstname Lastname",
-        email: "exampleemail@gmail.com",
-        phoneNumber: "000-000-0000"
-      },],
+      generalInfo: [],
       generalInfoInput: {
         name: "",
         email: "",
         phoneNumber: ""
       },
-      editMode: false,
+      editMode: true,
     }
   }
   
   handleNameChange = (e) => {
+    const prevState = this.state.generalInfoInput;
     this.setState({
       generalInfoInput: {
         name: e.target.value,
+        email: prevState.email,
+        phoneNumber: prevState.phoneNumber,
       }
-    })
-    console.log(e.target.value);
+    });
   }
 
   handleEmailChange = (e) => {
+    const prevState = this.state.generalInfoInput;
     this.setState({
       generalInfoInput: {
+        name: prevState.name,
         email: e.target.value,
+        phoneNumber: prevState.phoneNumber,
       }
-    })
-    console.log(e.target.value);
+    });
   }
 
   handlePhoneChange = (e) => {
+    const prevState = this.state.generalInfoInput;
     this.setState({
       generalInfoInput: {
+        name: prevState.name,
+        email: prevState.email,
         phoneNumber: e.target.value,
       }
-    })
-    console.log(e.target.value);
+    });
   }
 
   onSubmitInfo = (e) => {
@@ -59,13 +62,28 @@ class GeneralInfo extends Component {
     })
   }
 
+  addInfo = (e) => {
+    e.preventDefault();
+    this.setState({
+      editMode: true,
+    })
+  }
+
   render() {
     if (!this.state.editMode) {
       return ( 
         <div>
-          <h1>
-            General Info Section
-          </h1>
+          <button onClick={this.addInfo}>Add Info</button>
+          <button onClick={this.popSection}>Remove Latest Section</button>
+          {this.state.generalInfo.map((section) => {
+            return (
+              <div>
+                <h4 key={uniqid()}>{section.name}</h4>
+                <h4 key={uniqid()}>{section.email}</h4>
+                <h4 key={uniqid()}>{section.phoneNumber}</h4>
+              </div>
+            );
+          })}
         </div>
       );
     }
@@ -81,7 +99,7 @@ class GeneralInfo extends Component {
             onChange = {this.handleNameChange}
             value = {this.state.generalInfoInput.name}
             type = "text"
-            id="taskInput"
+            id="nameInput"
           />
           <label htmlFor="emailInput">Enter email </label>
           <input 
@@ -90,7 +108,7 @@ class GeneralInfo extends Component {
             type = "text"
             id = "emailInput"
           />
-          <label htmlFor="phoneInput">Enter email </label>
+          <label htmlFor="phoneInput">Enter phone number </label>
           <input 
             onChange = {this.handlePhoneChange}
             value = {this.state.generalInfoInput.phoneNumber}
